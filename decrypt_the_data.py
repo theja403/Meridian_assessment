@@ -1,13 +1,16 @@
-import json
 import base64
-import zlib
-from pathlib import Path
 
-import requests
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
+import os
+from dotenv import load_dotenv
+import requests
+from pathlib import Path
+import json
 
-
+load_dotenv()
+BASE_URL = os.getenv("BASE_URL")
+API_KEY = os.getenv("API_KEY")
 
 # -------------------------
 # GET KEY FROM PLATFORM (IMPORTANT)
@@ -110,8 +113,6 @@ def save_output(data, output_file):
 # -------------------------
 if __name__ == "__main__":
 
-    BASE_URL = "https://your-api-url"
-    API_KEY = "sa_xxx"
 
     # 1. Get dataset already loaded from Layer 1
     records = [...]  # your JSON-loaded dataset
